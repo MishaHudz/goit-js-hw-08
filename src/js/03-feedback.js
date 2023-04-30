@@ -12,15 +12,12 @@ if (savedObject) {
   }
 }
 
-form.addEventListener('click', evt => {
-  if (evt.target.nodeName !== 'BUTTON') return;
-
+form.addEventListener('submit', evt => {
   evt.preventDefault();
 
   console.log(JSON.parse(localStorage.getItem('feedback-form-state')));
 
-  form.elements.email.value = '';
-  form.elements.message.value = '';
+  evt.currentTarget.reset();
 
   localStorage.removeItem('feedback-form-state');
 });
@@ -39,4 +36,4 @@ function onInputChange(evt) {
   localStorage.setItem('feedback-form-state', JSON.stringify(createdObject));
 }
 
-const copyFun = debounce(onInputChange, 500);
+const copyFun = throttle(onInputChange, 500);
