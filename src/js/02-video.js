@@ -7,8 +7,6 @@ const watchProgres = Number.parseFloat(
   localStorage.getItem('videoplayer-current-time')
 );
 
-if (!watchProgres) localStorage.setItem('videoplayer-current-time', '0');
-
 player.setCurrentTime(watchProgres);
 
 player.on('timeupdate', throttle(timeSet, 1000));
