@@ -3,14 +3,17 @@ const { throttle, debounce } = require('lodash');
 const form = document.querySelector('.feedback-form');
 const savedObject = JSON.parse(localStorage.getItem('feedback-form-state'));
 
-if (savedObject) {
-  if (savedObject.email) {
-    form.elements.email.value = savedObject.email;
-  }
-  if (savedObject.message) {
-    form.elements.message.value = savedObject.message;
-  }
-}
+// if (savedObject) {
+//   if (savedObject.email) {
+//     form.elements.email.value = savedObject.email;
+//   }
+//   if (savedObject.message) {
+//     form.elements.message.value = savedObject.message;
+//   }
+// }
+
+form.elements.email.value = savedObject?.email || '';
+form.elements.message.value = savedObject?.message || '';
 
 form.addEventListener('submit', evt => {
   evt.preventDefault();
