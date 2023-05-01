@@ -3,13 +3,15 @@ import { throttle } from 'lodash';
 
 const iframe = document.querySelector('iframe');
 const player = new Player(iframe);
-let watchProgres = Number.parseFloat(
-  localStorage.getItem('videoplayer-current-time')
-);
 
-if (!watchProgres) {
-  watchProgres = 0;
-}
+// let watchProgres = Number.parseFloat(
+//   localStorage.getItem('videoplayer-current-time')
+// );
+
+// if (!watchProgres) {
+//   watchProgres = 0;
+// }
+const watchProgres = Number(localStorage.getItem('videoplayer-current-time'));
 
 player.setCurrentTime(watchProgres);
 
